@@ -1,0 +1,46 @@
+<?php
+$title = 'Users Management';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+	<table class="table table-bordered table-striped table-hover">
+	    <tr>
+	        <th>Name</th>
+	        <th>Email</th>
+	        <th>Mobile</th>
+	        <th>Address</th>
+	        <th>&nbsp;</th>
+	    </tr>
+	    <?php foreach ($users as $user) : ?>
+	        <tr>
+	            <td><?php echo $this->escapeHtml($user->name); ?></td>
+	            <td><?php echo $this->escapeHtml($user->email); ?></td>
+	            <td><?php echo $this->escapeHtml($user->mobile); ?></td>
+	            <td><?php echo $this->escapeHtml($user->address); ?></td>
+	            <td>
+	                <a class="btn btn-info" href="
+	                <?php 
+	                	echo $this->url('users', array('action' => 'edit', 'id' => $user->id));
+	                ?>">
+	                <span class="glyphicon glyphicon-pencil"></span>&nbsp;Alterar</a>
+	                <a class="btn btn-danger" href="
+	                <?php 
+	                	echo $this->url('users', array('action' => 'delete', 'id' => $user->id));
+	    			?>"><span class="glyphicon glyphicon-trash"></span>&nbsp;Excluir</a>
+	            </td>
+	        </tr>
+	    <?php endforeach; ?>
+	    <tr>
+	        <td colspan="5">  
+	        	<a class="btn btn-success pull-right" href="
+	        	<?php 
+	        		echo $this->url('users', array('action' => 'add')); 
+	        	?>">
+	        	<span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
+	        	Add new User&nbsp;
+	        	<span class="glyphicon glyphicon-user"></span>
+	        	</a>
+	        	</td>
+	    </tr>
+	</table>

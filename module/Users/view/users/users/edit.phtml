@@ -1,0 +1,89 @@
+<style>
+.left-inner-addon {
+	position: relative;
+}
+.left-inner-addon input {
+	padding-left: 30px;
+}
+.left-inner-addon i {
+	position: absolute;
+	padding: 10px 12px;
+	pointer-events: none;
+}
+</style>
+<?php
+	// module/Users/view/users/users/add.phtml:
+	$title = 'Editar User';
+	$this->headTitle($title);
+?>
+<h1 style="text-align: center">
+<?php echo $this->escapeHtml($title); ?>
+</h1>
+<?php
+	/*$form = $this->form;
+	$form->prepare();
+	$form->setAttribute('action', $this->url(NULL,array('controller' => 'Users', 'action' =>'edit')));
+	$form->setAttribute('method', 'post');
+	echo $this->form()->openTag($form);
+	echo $this->formHidden($form->get('id'));*/
+
+$form = $this->form;
+$form->prepare();
+//$form->setAttribute('action', $this->url('users',array('action' => 'edit','id'=> $this->id,)));
+//$form->setAttribute('action', $this->url(NULL,array('controller' => 'Users', 'action' =>'edit')));
+$form->setAttribute('action', $this->url(NULL,array('controller' => 'Users', 'action' =>'saveEdit')));
+$form->setAttribute('method', 'post');
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+?>
+<table class="table table-bordered table-striped" style="width:80%;">
+	<tr>	
+		<td width="30%"><?php echo $this->formLabel($form->get('name')); ?></td>
+		<td width="60%">
+			<div class="left-inner-addon ">
+				<?php echo $this->formElement($form->get('name'));?>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<?php echo $this->formLabel($form->get('email')); ?>
+		</td>
+		<td>
+			<div class="left-inner-addon ">
+				<?php echo $this->formElement($form->get('email')); ?>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<?php echo $this->formLabel($form->get('mobile')); ?>
+		</td>
+		<td>
+			<div class="left-inner-addon ">
+				<?php echo $this->formElement($form->get('mobile'));?>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<?php echo $this->formLabel($form->get('address')); ?>
+		</td>
+		<td>
+			<?php echo $this->formElement($form->get('address')); ?>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<?php echo $this->formElement($form->get('submit'));?>		
+		</td>
+	</tr>
+	
+</table>
+<?php 
+	echo $this->form()->closeTag();
+?>	
+	
+	
+	
+	
